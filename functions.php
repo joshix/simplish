@@ -22,7 +22,7 @@ if(!function_exists('sp_setup')){
 		add_theme_support('automatic-feed-links');
 
 		/* Offer Custom Background admin options. */
-		add_custom_background();
+		add_theme_support('custom-background');
 		
 		/* Menu - wp_nav_menu() in sidebar.php - new in WP3. */
 		register_nav_menus( array('nowidget-right-sidebar' => __( '(Non-widget) Sidebar Menu', 'simplish' ), ) );
@@ -105,7 +105,22 @@ if(!function_exists('sp_admin_header_style')):
 	<?php
 	}
 endif;
-add_custom_image_header('sp_header_style', 'sp_admin_header_style');
+
+$defaults = array(
+    'default-image'          => '',
+    'width'                  => 900,
+    'height'                 => 62,
+    'flex-height'            => true,
+    'flex-width'             => true,
+    'uploads'                => true,
+    'random-default'         => false,
+    'header-text'            => true,
+    'default-text-color'     => '',
+    'wp-head-callback'       => 'sp_header_style',
+    'admin-head-callback'    => 'sp_admin_header_style',
+    'admin-preview-callback' => '',
+);
+add_theme_support( 'custom-header', $defaults );
 
 /* Widget Sidebar */
 function sp_widgets_init()
