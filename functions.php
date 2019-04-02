@@ -6,7 +6,7 @@ if(!isset($content_width))
 
 /* Only define it if some child theme hasn't already */
 if(!function_exists('sp_setup')){
-	/* 
+	/*
 	 * Setup: textdomain, nav_menu support.
 	 */
 	function sp_setup()
@@ -16,17 +16,20 @@ if(!function_exists('sp_setup')){
 		 * load_theme_textdomain( $domain, $path )
 		 * $path relative from / of URL space.
 		 */
-		load_theme_textdomain( 'simplish', TEMPLATEPATH . '/languages' );
-		
+		load_theme_textdomain( 'simplish', get_template_directory() . '/languages' );
+
+		/* @since WP4.1 we don't write the title tag in html head. */
+		add_theme_support('title-tag');
+
 		/* Generate default RSS/Atom feed links in output head. */
 		add_theme_support('automatic-feed-links');
 
 		/* Offer Custom Background admin options. */
 		add_theme_support('custom-background');
-		
+
 		/* Menu - wp_nav_menu() in sidebar.php - new in WP3. */
 		register_nav_menus( array('nowidget-right-sidebar' => __( '(Non-widget) Sidebar Menu', 'simplish' ), ) );
-				
+
 		/* Current use in search results view. */
 		add_theme_support('post-thumbnails');
 		set_post_thumbnail_size(50, 50, true);
@@ -36,27 +39,6 @@ if(!function_exists('sp_setup')){
 /* The after_setup_theme hook fires before the theme init hook. */
 add_action('after_setup_theme', 'sp_setup');
 
-/* 
- * Custom Header Image.
- * BUG: Admin hdr img preview gets vertically tiled? (It is only 62px h.)
- */
-if(!defined('HEADER_TEXTCOLOR'))
-	define('HEADER_TEXTCOLOR', '000');
-	
-/* Commented out because simplish ships no default image. */
-//if(!defined('HEADER_IMAGE'))
-//	define('HEADER_IMAGE', get_bloginfo('stylesheet_directory') . '/images/banner.jpg'); //To allow child themes' imgs
-
-define('HEADER_IMAGE_WIDTH', 900); 
-define('HEADER_IMAGE_HEIGHT', 62);
-
-/* Controls whether text color/styling opts are offered in admin.
- * A confusing name and value. Quite a pair.
- * Simplish offers text styling opts.
- */
-if(!defined('NO_HEADER_TEXT'))
-	define('NO_HEADER_TEXT', false);
-	
 if(!function_exists('sp_header_style')):
 	function sp_header_style()
 	{
@@ -79,7 +61,7 @@ if(!function_exists('sp_header_style')):
 					color: #760909;
 				}';
 				break;
-			/* Use hdr text color set in theme hdr admin. */	
+			/* Use hdr text color set in theme hdr admin. */
 			default:
 				echo '/* Must spec <a> or else style.css is more specific & wins. */
 				#header a:link, #header a:visited, #header h1, #header h2{
@@ -98,15 +80,15 @@ if(!function_exists('sp_admin_header_style')):
 	?>
 		<style type="text/css">
 		#headimg {
-			width: <?php echo HEADER_IMAGE_WIDTH; ?>px;
-			height: <?php echo HEADER_IMAGE_HEIGHT; ?>px;
+			width: <?php echo $image_header_defaults['width']; ?>px;
+			height: <?php echo $image_header_defaults['height']; ?>px;
 		}
 		</style>
 	<?php
 	}
 endif;
 
-$defaults = array(
+$image_header_defaults = array(
     'default-image'          => '',
     'width'                  => 900,
     'height'                 => 62,
@@ -115,12 +97,12 @@ $defaults = array(
     'uploads'                => true,
     'random-default'         => false,
     'header-text'            => true,
-    'default-text-color'     => '',
+    'default-text-color'     => '000',
     'wp-head-callback'       => 'sp_header_style',
     'admin-head-callback'    => 'sp_admin_header_style',
     'admin-preview-callback' => '',
 );
-add_theme_support( 'custom-header', $defaults );
+add_theme_support( 'custom-header', $image_header_defaults );
 
 /* Widget Sidebar */
 function sp_widgets_init()
@@ -138,7 +120,7 @@ add_action('widgets_init', 'sp_widgets_init');
  *
  * To override this in a child theme, remove the filter and add your own
  * function tied to the excerpt_length filter hook.
- * 
+ *
  * All excerpt handling borrows heavily from the 2010 theme.
  *
  * @since Simplish 2.4.2 (Twenty Ten 1.0)
@@ -183,7 +165,7 @@ function sp_readmore_link()
  *
  * @since Simplish 2.4.2 (Twenty Ten 1.0)
  * @return string An ellipsis and a link
- */	
+ */
 function sp_auto_excerpt_more($more)
 {
 	return ' &hellip;' . sp_readmore_link();
@@ -217,7 +199,7 @@ add_filter( 'get_the_excerpt', 'sp_custom_excerpt_more' );
 function sp_zero_gallery_css($css){
 	return preg_replace("#<style type='text/css'>(.*?)</style>#s", '', $css);
 }
-add_filter('gallery_style', 'sp_zero_gallery_css');	
+add_filter('gallery_style', 'sp_zero_gallery_css');
 
 /*
  * hCard producers based on blog.txt,

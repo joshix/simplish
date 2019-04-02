@@ -2,7 +2,6 @@
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo('charset'); ?>" />
-	<title><?php if(is_404()): ?><?php _e('Error 404 - Not Found', 'simplish'); ?> - <?php elseif(is_search()): ?><?php the_search_query() ?> - <?php else: ?><?php wp_title('-',true,'right'); ?><?php endif ?><?php bloginfo('name') ?><?php if(is_search()): ?> <?php _e('Search', 'simplish'); ?><?php endif ?></title>
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="all" title="Simplish" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
@@ -24,7 +23,7 @@ endif;
 <body <?php body_class(); ?>>
 <div id="container">
 	<div id="header" role="banner">
-		<h1><span><a href="<?php bloginfo('url'); ?>" rel="home"><?php bloginfo('name'); ?></a></span></h1>
+		<h1><span><a href="<?php echo esc_url( home_url() );  ?>" rel="home"><?php bloginfo('name'); ?></a></span></h1>
 		<h2><?php bloginfo('description'); ?></h2>
 	</div>
 	<div id="content-wrapper">

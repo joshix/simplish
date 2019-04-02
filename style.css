@@ -1,18 +1,19 @@
 /*
 THEME NAME: Simplish
-THEME URI: http://simplish.pomfolio.com
+THEME URI: https://github.com/joshix/simplish
 DESCRIPTION: Simplish is a WordPress variant of the Scribbish theme for blogs.
-TAGS: two-columns, fixed-width, right-sidebar, custom-header, custom-background, custom-menu, threaded-comments, sticky-post, translation-ready, microformats, white, light
+TAGS: two-columns, right-sidebar, custom-header, custom-background, custom-menu, threaded-comments, sticky-post, translation-ready, microformats
 VERSION: 2.6.1pre
-AUTHOR: <a href="http://labs.utopian.net">Utopian.net Labs</a>, <a href="http://pittcrew.net/geekblog/">K. Pitt</a>, <a href="http://quotedprintable.com">J. Hardy</a>
-AUTHOR URI:
+AUTHOR: Josh Wood
+AUTHOR URI: http://joshix.com
 LICENSE: GNU General Public License v3.0
 LICENSE URI: http://www.gnu.org/licenses/gpl-3.0.html
+TEXT DOMAIN: simplish
 */
 
 /*
  * Reset. Adapted from Eric Meyer, via CSS Boilerplate.
- * Uses different bracket/spacing style to ease comparing with source. 
+ * Uses different bracket/spacing style to ease comparing with source.
  */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: transparent; }
 body { line-height: 1; }
@@ -334,6 +335,10 @@ li.comment, li.trackback, li.pingback{
 li.depth-1{
 	border: 1px solid #ddd;
 	margin: 1.5em 0;
+}
+.bypostauthor{
+  display: block;
+	box-shadow: inset 4px 6px 2px 3px #0000000f;
 }
 li.comment.preview{
 	background: #ffc;
