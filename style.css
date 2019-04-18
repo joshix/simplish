@@ -237,6 +237,7 @@ th{
 	letter-spacing: -1.5px;
 	line-height: 99%;
 	margin: 0;
+	overflow-wrap: break-word;
 }
 h2.page-title{
 	margin: 0 0 .3em;
