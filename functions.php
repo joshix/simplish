@@ -1,8 +1,11 @@
 <?php
-
-/* Width set equal to width in style.css:/^#content */
-if(!isset($content_width))
-	$content_width = 662;
+/**
+ * Simplish functions and configuration routines
+ *
+ * @package WordPress
+ * @subpackage Simplish
+ * @since 2.0
+ */
 
 /* Only define it if some child theme hasn't already */
 if(!function_exists('sp_setup')){
@@ -17,6 +20,20 @@ if(!function_exists('sp_setup')){
 		 * $path relative from / of URL space.
 		 */
 		load_theme_textdomain( 'simplish', get_template_directory() . '/languages' );
+
+		/*
+		 * Make search form, comment form, and comments output HTML5.
+		 */
+		add_theme_support(
+			'html5',
+			array(
+				'search-form',
+				'comment-form',
+				'comment-list',
+				'gallery',
+				'caption',
+			)
+		);
 
 		/* @since WP4.1 we don't write the title tag in html head. */
 		add_theme_support('title-tag');
@@ -88,7 +105,7 @@ if(!function_exists('sp_admin_header_style')):
 	}
 endif;
 
-$image_header_defaults = array(
+$sp_image_header_defaults = array(
     'default-image'          => '',
     'width'                  => 900,
     'height'                 => 62,
@@ -102,7 +119,7 @@ $image_header_defaults = array(
     'admin-head-callback'    => 'sp_admin_header_style',
     'admin-preview-callback' => '',
 );
-add_theme_support( 'custom-header', $image_header_defaults );
+add_theme_support( 'custom-header', $sp_image_header_defaults );
 
 /* Widget Sidebar */
 function sp_widgets_init()
@@ -114,6 +131,33 @@ function sp_widgets_init()
 	) );
 }
 add_action('widgets_init', 'sp_widgets_init');
+
+/**
+ * Set content width in pixels.
+ * Equal to width in style.css:/^#content (662 pixels).
+ *
+ * Priority 0 to make it available to lower priority callbacks.
+ *
+ * @global int $content_width Content width.
+ */
+function sp_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'sp_content_width', 662 );
+}
+add_action( 'after_setup_theme', 'sp_content_width', 0 );
+
+/**
+ * Enqueue styles and js.
+ */
+function sp_scripts() {
+	wp_enqueue_style( 'sp-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
+
+	wp_style_add_data( 'sp-style', 'rtl', 'replace' );
+
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'sp_scripts' );
 
 /**
  * Set post excerpt length.

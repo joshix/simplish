@@ -3,21 +3,8 @@
 <head>
 	<meta charset="<?php bloginfo('charset'); ?>" />
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
-	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="all" title="Simplish" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-
-<?php
-/* 
- * Comment threads script loads on post, page,
- * or attachment when option is true.
- */
-if(is_singular() && get_option('thread_comments')):
-	wp_enqueue_script('comment-reply');
-endif;
-?>
-
-<?php wp_head(); // DO NOT REMOVE - for plugin api ?>
-
+	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
