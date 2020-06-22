@@ -8,6 +8,7 @@
 </head>
 
 <body <?php body_class(); ?>>
+<?php wp_body_open(); ?>
 <div id="container">
 	<div id="header" role="banner">
 		<h1><span><a href="<?php echo esc_url( home_url() );  ?>" rel="home"><?php bloginfo('name'); ?></a></span></h1>

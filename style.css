@@ -3,7 +3,9 @@ THEME NAME: Simplish
 THEME URI: https://github.com/joshix/simplish
 DESCRIPTION: Simplish is a WordPress variant of the Scribbish theme for blogs.
 TAGS: two-columns, right-sidebar, custom-header, custom-background, custom-menu, threaded-comments, sticky-post, translation-ready, microformats
-VERSION: 2.6.2pre
+VERSION: 2.6.2
+TESTED UP TO: 5.4.2
+REQUIRES PHP: 7.4
 AUTHOR: Josh Wood
 AUTHOR URI: http://joshix.com
 LICENSE: GNU General Public License v3.0

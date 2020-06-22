@@ -2,8 +2,8 @@
 Contributors: joshix
 Tags: two-columns, fixed-width, right-sidebar, custom-header, custom-background, custom-menu, threaded-comments, sticky-post, translation-ready, microformats, white, light
 Requires at least: 4.1
-Tested up to: WordPress 5.1.1
-Stable tag: 2.6.1
+Tested up to: WordPress 5.4.2
+Stable tag: 2.6.2
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -16,6 +16,13 @@ implements the hAtom microformat specification for posts and hCard for post
 authors.
 
 == Changelog ==
+= 2.6.2 =
+* Released: June 22, 2020
+
+Updates to functions.php from Theme Check plugin and WP 5.4.2. Forms are now
+HTML5. Enqueue styles and scripts in functions instead of building them by hand
+in header.php. 
+
 = 2.6.1 =
 * Released: April 1, 2019
 
@@ -24,7 +31,8 @@ Updates for WP 5 compatibility.
 = 2.6 =
 * Released: February 10, 2011
 
-Latest release at WordPress themes directory.
+Major release with new WP features support, simpler simplish styles, wider
+testing, new languages.
 
 = 1.3.3 =
 * Released: July 19, 2008
