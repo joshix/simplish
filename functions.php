@@ -22,18 +22,9 @@ if(!function_exists('sp_setup')){
 		load_theme_textdomain( 'simplish', get_template_directory() . '/languages' );
 
 		/*
-		 * Make search form, comment form, and comments output HTML5.
+		 * Make search form, comment form, and comments HTML5.
 		 */
-		add_theme_support(
-			'html5',
-			array(
-				'search-form',
-				'comment-form',
-				'comment-list',
-				'gallery',
-				'caption',
-			)
-		);
+		add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', ) );
 
 		/* @since WP4.1 we don't write the title tag in html head. */
 		add_theme_support('title-tag');
