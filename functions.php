@@ -27,25 +27,34 @@ if(!function_exists('sp_setup')){
 		add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', ) );
 
 		/* @since WP4.1 we don't write the title tag in html head. */
-		add_theme_support('title-tag');
+		add_theme_support( 'title-tag' );
 
 		/* Generate default RSS/Atom feed links in output head. */
-		add_theme_support('automatic-feed-links');
+		add_theme_support( 'automatic-feed-links' );
 
 		/* Offer Custom Background admin options. */
-		add_theme_support('custom-background');
-
-		/* Menu - wp_nav_menu() in sidebar.php - new in WP3. */
-		register_nav_menus( array('nowidget-right-sidebar' => __( '(Non-widget) Sidebar Menu', 'simplish' ), ) );
+		add_theme_support( 'custom-background' );
 
 		/* Current use in search results view. */
-		add_theme_support('post-thumbnails');
-		set_post_thumbnail_size(50, 50, true);
+		add_theme_support( 'post-thumbnails' );
+		set_post_thumbnail_size( 50, 50, true );
 
+		/* Default library block styles CSS for structural elements. */
+		add_theme_support( 'wp-block-styles' );
+
+		/* Allow img and some other block types to define alignwide/alignfull classes. */
+		add_theme_support( 'align-wide' );
+
+		/* Add wp-embed-reponsive class to <body> so embedded blocks resize at aspect ratio. */
+		add_theme_support( 'responsive-embeds' );
+
+		/* Menu - wp_nav_menu() in sidebar.php - new in WP3. */
+		register_nav_menus( array( 'nowidget-right-sidebar' => __( '(Non-widget) Sidebar Menu', 'simplish' ), ) );
 	}
 }
+
 /* The after_setup_theme hook fires before the theme init hook. */
-add_action('after_setup_theme', 'sp_setup');
+add_action( 'after_setup_theme', 'sp_setup' );
 
 if(!function_exists('sp_header_style')):
 	function sp_header_style()

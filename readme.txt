@@ -2,8 +2,8 @@
 Contributors: joshix
 Tags: two-columns, fixed-width, right-sidebar, custom-header, custom-background, custom-menu, threaded-comments, sticky-post, translation-ready, microformats, white, light
 Requires at least: 4.1
-Tested up to: WordPress 6.0
-Stable tag: 2.6.3
+Tested up to: WordPress 6.1
+Stable tag: 2.6.4
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -16,6 +16,13 @@ Scribbish (c.2005). It began in 2008 as a patchset for
 microformat specification for posts and hCard for post authors.
 
 == Changelog ==
+= 2.6.4 =
+* Released: February 21, 2023
+
+Add theme support for default basic block styles, alignwide/alignfull
+classes on image and some other block types, and responsive classes
+for media embeds. Test with WP 6.1.1.
+
 = 2.6.3 =
 * Released: July 30, 2022
 
